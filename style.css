@@ -1,0 +1,198 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2e3b4e;
+    color: #ffffff;
+    text-align: center;
+    padding: 50px;
+    margin: 0;
+}
+
+#game-container {
+    position: relative;  /* Contenitore per il bottone e le carte */
+    display: inline-block;
+    background-color: #3b4e6b;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonne con larghezza uguale */
+    gap: 25px; /* Spazio tra le carte sia orizzontalmente che verticalmente */
+    justify-items: center; /* Centra le carte all'interno delle celle */
+    margin-top: 30px;
+}
+
+.card-wrapper {
+    position: relative; /* Permette di posizionare il numero sopra la carta */
+    width: 70px; /* Imposta la larghezza della carta */
+    height: auto; /* Mantieni l'aspetto proporzionale */
+    text-align: center;
+}
+
+.card-wrapper img {
+    width: 100%;  /* La carta occupa tutta la larghezza della cella */
+    height: auto; /* Mantieni l'aspetto proporzionale */
+}
+
+.card-number {
+    position: absolute; /* Posiziona il numero assolutamente rispetto al contenitore */
+    top: -25px; /* Posiziona il numero sopra la carta */
+    left: 50%;
+    transform: translateX(-50%); /* Centra il numero orizzontalmente */
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: bold; /* Testo in grassetto */
+    background-color: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente per rendere il numero leggibile */
+    padding: 2px 5px;
+    border-radius: 3px; /* Bordo arrotondato per il numero */
+}
+
+#gira-carta-btn {
+    position: fixed; /* Posizione fissa sopra la pagina */
+    top: 20px;  /* Distanza dal bordo superiore della pagina */
+    left: 50%;
+    transform: translateX(-50%); /* Centra il bottone orizzontalmente */
+    background-color: #ff9800;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 10; /* Assicura che il bottone sia sopra le carte */
+    min-width: 120px; /* Imposta una larghezza minima per il bottone */
+}
+
+#gira-carta-btn:hover {
+    background-color: #e68a00;
+}
+
+#mescola-mazzo-btn{
+    position: fixed; /* Posizione fissa sopra la pagina */
+    bottom: 20px;  /* Distanza dal bordo inferiore della pagina */
+    left: 50%;
+    transform: translateX(-50%); /* Centra il bottone orizzontalmente */
+    background-color: #4caf50;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 10; /* Assicura che il bottone sia sopra le carte */
+    min-width: 120px; /* Imposta una larghezza minima per il bottone */
+    display: none; /* Inizialmente nascosto */
+}
+
+#mescola-mazzo-btn:hover {
+    background-color: #388e3c;
+}
+
+#rigioca-btn {
+    position: fixed; /* Posizione fissa sopra la pagina */
+    bottom: 20px;  /* Distanza dal bordo inferiore della pagina */
+    left: 50%;
+    transform: translateX(-50%); /* Centra il bottone orizzontalmente */
+    background-color: #4caf50;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 10; /* Assicura che il bottone sia sopra le carte */
+    min-width: 120px; /* Imposta una larghezza minima per il bottone */
+    display: none; /* Inizialmente nascosto */
+}
+
+#rigioca-btn:hover {
+    background-color: #388e3c;
+}
+
+#statistiche-btn {
+    position: fixed; /* Posizione fissa sopra la pagina */
+    bottom: 80px; /* Distanza dal bordo inferiore della pagina, sopra il pulsante Rigioca */
+    left: 50%;
+    transform: translateX(-50%); /* Centra il bottone orizzontalmente */
+    background-color: #2196F3;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 10; /* Assicura che il bottone sia sopra le carte */
+    min-width: 150px; /* Imposta una larghezza minima per il bottone */
+}
+
+#statistiche-btn:hover {
+    background-color: #1976D2;
+}
+
+#stats-container {
+    margin-top: 20px;
+}
+
+/* Mazzo di carte napoletane */
+#mazzo-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#mazzo-carte {
+    width: 100px;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.mescola-animazione {
+    animation: mescolaMazzo 1s ease-in-out infinite;
+}
+
+@keyframes mescolaMazzo {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+}
+
+/* Stile per il messaggio di perdita */
+#lose-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: red;
+    font-size: 48px; /* Font grande */
+    font-family: 'Poppins', sans-serif; /* Font rotondeggiante */
+    font-weight: bold; /* Grassetto per lettere grosse */
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 100; /* Assicura che il messaggio sia sopra tutti gli altri elementi */
+    display: none; /* Inizialmente nascosto */
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6); /* Ombra del testo */
+    background: transparent; /* Assicura che non ci sia uno sfondo */
+    border: none; /* Nessun bordo */
+}
+
+#win-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: green;
+    font-size: 48px; /* Font grande */
+    font-family: 'Poppins', sans-serif; /* Font rotondeggiante */
+    font-weight: bold; /* Grassetto per lettere grosse */
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 100; /* Assicura che il messaggio sia sopra tutti gli altri elementi */
+    display: none; /* Inizialmente nascosto */
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6); /* Ombra del testo */
+    background: transparent; /* Assicura che non ci sia uno sfondo */
+    border: none; /* Nessun bordo */
+}
