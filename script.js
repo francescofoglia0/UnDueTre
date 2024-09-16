@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const carta = mazzoMescolato[indiceCarta];
         const cartaImg = document.createElement('img');
-        cartaImg.src = `images/${carta}.png`;
+        cartaImg.src = `${carta}.png`;
         cartaImg.alt = carta;
 
         const cardWrapper = document.createElement('div');
